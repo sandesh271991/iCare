@@ -1,0 +1,6 @@
+framework module Pods_iCare_iCareUITests {
+  umbrella header "Pods-iCare-iCareUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

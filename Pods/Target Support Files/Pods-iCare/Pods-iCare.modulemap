@@ -1,0 +1,6 @@
+framework module Pods_iCare {
+  umbrella header "Pods-iCare-umbrella.h"
+
+  export *
+  module * { export * }
+}
