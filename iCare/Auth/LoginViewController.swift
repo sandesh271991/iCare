@@ -41,8 +41,8 @@ class LoginViewController: UIViewController {
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
                     
-                    //Go to the HomeViewController if the login is sucessful
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+                    //Go to the BloodCollectorVC if the login is sucessful
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController")
                     vc?.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
                     self.present(vc!, animated: true, completion: nil)
                     

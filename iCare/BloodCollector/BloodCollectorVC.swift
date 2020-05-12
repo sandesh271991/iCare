@@ -19,13 +19,11 @@ import SVProgressHUD
 class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var refBloodBank: DatabaseReference!
-    // let geofireRef = Database.database().reference()
-    var geoFire: GeoFire? = nil
     
     var geocoder = CLGeocoder()
     let bankAdditionQueue = DispatchQueue(label: "com.sandesh.icare", qos: .userInteractive)
 
-    var bankLocation = [String]()
+    var bankLocation = [Double]()
 
     
     //list to store all the blood bank
@@ -42,7 +40,6 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         // Do any additional setup after loading the view.
         refBloodBank = Database.database().reference().child("bloodbank");
-        geoFire = GeoFire(firebaseRef: refBloodBank)
         showSpinner(onView: self.view)
       fetchBloodBanks()
     }
@@ -60,8 +57,8 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
                            let placemark = placemarks?.first
                         lat = placemark?.location?.coordinate.latitude ?? 0
                         lon = placemark?.location?.coordinate.longitude ?? 0
-                        self.bankLocation.append("\(String(describing: lat))")
-                        self.bankLocation.append("\(String(describing: lon))")
+                        self.bankLocation.append(lat)
+                        self.bankLocation.append(lon)
 
                         self.addBloodBank()
                        }
@@ -166,6 +163,12 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         bloodBankCell?.detailTextLabel?.text = bloodbank.bloodBankCity
         
         return bloodBankCell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bloodBankDetailsVC = storyboard?.instantiateViewController(identifier: "BloodBankDetailsVC") as! BloodBankDetailsVC
+       bloodBankDetailsVC.bloodBankDetails = bloodBankList[indexPath.row]
+        self.navigationController?.pushViewController(bloodBankDetailsVC, animated: true)
     }
     
 }

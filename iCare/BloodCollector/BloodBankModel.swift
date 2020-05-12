@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class BloodBankModel {
+struct BloodBankModel {
     
     var id: String?
     var bloodBankName: String?
