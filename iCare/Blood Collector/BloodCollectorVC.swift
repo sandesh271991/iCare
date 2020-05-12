@@ -14,17 +14,16 @@ import GeoFire
 import CoreLocation
 import SVProgressHUD
 
-
-
 class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var refBloodBank: DatabaseReference!
+    var refAppUser: DatabaseReference!
     
     var geocoder = CLGeocoder()
     let bankAdditionQueue = DispatchQueue(label: "com.sandesh.icare", qos: .userInteractive)
-
+    
     var bankLocation = [Double]()
-
+    
     
     //list to store all the blood bank
     var bloodBankList = [BloodBankModel]()
@@ -40,35 +39,34 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         // Do any additional setup after loading the view.
         refBloodBank = Database.database().reference().child("bloodbank");
+        refAppUser = Database.database().reference().child("appUser");
+        
+        addAppUser()
+        
         showSpinner(onView: self.view)
-      fetchBloodBanks()
+        fetchBloodBanks()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-        func setLocation(location: String){
-            bankLocation.removeAll()
-            var lat: CLLocationDegrees = 0
-                       var lon: CLLocationDegrees = 0
-                       geocoder.geocodeAddressString(location) { placemarks, error in
-                           let placemark = placemarks?.first
-                        lat = placemark?.location?.coordinate.latitude ?? 0
-                        lon = placemark?.location?.coordinate.longitude ?? 0
-                        self.bankLocation.append(lat)
-                        self.bankLocation.append(lon)
-
-                        self.addBloodBank()
-                       }
-
-            }
-
+    func setLocation(location: String){
+        bankLocation.removeAll()
+        var lat: CLLocationDegrees = 0
+        var lon: CLLocationDegrees = 0
+        geocoder.geocodeAddressString(location) { placemarks, error in
+            let placemark = placemarks?.first
+            lat = placemark?.location?.coordinate.latitude ?? 0
+            lon = placemark?.location?.coordinate.longitude ?? 0
+            self.bankLocation.append(lat)
+            self.bankLocation.append(lon)
+            self.addBloodBank()
+        }
+    }
+    
     
     func fetchBloodBanks() {
-        // refArtists = FIRDatabase.database().reference().child("bloodbank");
-        
         //observing the data changes
         refBloodBank.observe(DataEventType.value, with: { (snapshot) in
             
@@ -83,7 +81,7 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
                     //getting values
                     let bloodBankObject = bloodbank.value as? [String: AnyObject]
                     let bloodBankName  = bloodBankObject?["bloodBankName"] as! String
-                    let bloodBankId  = bloodBankObject?["bloodBankId"] as! String
+                    let bloodBankId  = bloodBankObject?["userId"] as! String
                     let bloodBankCity = bloodBankObject?["bloodBankCity"] as! String
                     let bloodBankLocation = bloodBankObject?["bloodBankLocation"] as! NSArray
                     //creating artist object with model and fetched values
@@ -96,17 +94,15 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
                 
                 //reloading the tableview
                 self.tableview.reloadData()
-
             }
         })
         self.removeSpinner()
-
     }
     
     
     @IBAction func btnSubmit(_ sender: Any) {
         showSpinner(onView: self.view)
-       setLocation(location: txtBloodBankCity.text ?? "")
+        setLocation(location: txtBloodBankCity.text ?? "")
     }
     
     func addBloodBank(){
@@ -115,19 +111,57 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let key = refBloodBank.childByAutoId().key
         
         //creating Bank with the given values
-        
-        let bloodBank = ["bloodBankId":key,
-                         "bloodBankName": self.txtBlodBankName.text! as String,
-                         "bloodBankCity": self.txtBloodBankCity.text! as String,
-                         "bloodBankLocation": self.bankLocation 
-            ] as [String : Any]
-        
-        //adding the artist inside the generated unique key
-        self.refBloodBank.child(key ?? "").setValue(bloodBank)
-        
-        //displaying message
-        print("added")
-      self.fetchBloodBanks()
+        if  let userID = (Auth.auth().currentUser?.uid) {
+            
+            refBloodBank.queryOrdered(byChild: "userId").queryEqual(toValue: userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() {
+                    print("exist")
+                    for bloodbank in snapshot.children.allObjects as! [DataSnapshot] {
+                        let bloodBankObject = bloodbank.value as? [String: AnyObject]
+                        let bloodBankName  = bloodBankObject?["bloodBankName"] as! String
+                        self.showAlert(title: "Blood Bank already added", message: bloodBankName)
+                    }
+                }
+                else{
+                    
+                    let bloodBank = ["userId":userID,
+                                     "bloodBankName": self.txtBlodBankName.text! as String,
+                                     "bloodBankCity": self.txtBloodBankCity.text! as String,
+                                     "bloodBankLocation": self.bankLocation
+                        ] as [String : Any]
+                    
+                    //adding the artist inside the generated unique key
+                    self.refBloodBank.child(key ?? "").setValue(bloodBank)
+                    
+                    //displaying message
+                    print("added")
+                    
+                }
+            })
+            
+        }
+        self.fetchBloodBanks()
+    }
+    
+    func addAppUser(){
+        //generating a new key inside artists node
+        //and also getting the generated key
+        if  let userID = (Auth.auth().currentUser?.uid) {
+            let key = refAppUser.childByAutoId().key
+            
+            //creating Bank with the given values
+            
+            let userInfo = ["userId":userID,
+                            "userName": "sandesh",
+                            "bloodBankCity": "nagpur",
+                ] as [String : Any]
+            
+            //adding the artist inside the generated unique key
+            self.refAppUser.child(key ?? "").setValue(userInfo)
+            
+            //displaying message
+            print("user info added")
+        }
     }
     
     
@@ -167,8 +201,12 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bloodBankDetailsVC = storyboard?.instantiateViewController(identifier: "BloodBankDetailsVC") as! BloodBankDetailsVC
-       bloodBankDetailsVC.bloodBankDetails = bloodBankList[indexPath.row]
+        bloodBankDetailsVC.bloodBankDetails = bloodBankList[indexPath.row]
         self.navigationController?.pushViewController(bloodBankDetailsVC, animated: true)
     }
     
 }
+
+
+
+

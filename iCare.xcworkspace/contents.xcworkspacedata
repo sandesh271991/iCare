@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BloodDonerVC.swift">
+   </FileRef>
+   <FileRef
       location = "group:iCare.xcodeproj">
    </FileRef>
    <FileRef
