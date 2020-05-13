@@ -10,29 +10,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import GeoFire
-import CoreLocation
-import SVProgressHUD
 
-class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BloodCollectorVC: UIViewController {
     
     var refBloodBank: DatabaseReference!
     var refAppUser: DatabaseReference!
-    
-    var geocoder = CLGeocoder()
-    let bankAdditionQueue = DispatchQueue(label: "com.sandesh.icare", qos: .userInteractive)
-    
-    var bankLocation = [Double]()
-    
-    
+
     //list to store all the blood bank
     var bloodBankList = [BloodBankModel]()
     
     @IBOutlet weak var tableview: UITableView!
-    
-    @IBOutlet weak var txtBlodBankName: UITextField!
-    
-    @IBOutlet weak var txtBloodBankCity: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,31 +30,20 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         addAppUser()
         
-        showSpinner(onView: self.view)
-        fetchBloodBanks()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         fetchBloodBanks()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func setLocation(location: String){
-        bankLocation.removeAll()
-        var lat: CLLocationDegrees = 0
-        var lon: CLLocationDegrees = 0
-        geocoder.geocodeAddressString(location) { placemarks, error in
-            let placemark = placemarks?.first
-            lat = placemark?.location?.coordinate.latitude ?? 0
-            lon = placemark?.location?.coordinate.longitude ?? 0
-            self.bankLocation.append(lat)
-            self.bankLocation.append(lon)
-            self.addBloodBank()
-        }
-    }
-    
-    
     func fetchBloodBanks() {
         //observing the data changes
+        showSpinner(onView: self.view)
+
         refBloodBank.observe(DataEventType.value, with: { (snapshot) in
             
             //if the reference have some values
@@ -101,48 +77,23 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func btnSubmit(_ sender: Any) {
-        showSpinner(onView: self.view)
-        setLocation(location: txtBloodBankCity.text ?? "")
+//        showSpinner(onView: self.view)
+//        setLocation(location: txtBloodBankCity.text ?? "")
     }
     
-    func addBloodBank(){
-        //generating a new key inside artists node
-        //and also getting the generated key
-        let key = refBloodBank.childByAutoId().key
-        
-        //creating Bank with the given values
-        if  let userID = (Auth.auth().currentUser?.uid) {
-            
-            refBloodBank.queryOrdered(byChild: "userId").queryEqual(toValue: userID).observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.exists() {
-                    print("exist")
-                    for bloodbank in snapshot.children.allObjects as! [DataSnapshot] {
-                        let bloodBankObject = bloodbank.value as? [String: AnyObject]
-                        let bloodBankName  = bloodBankObject?["bloodBankName"] as! String
-                        self.showAlert(title: "Blood Bank already added", message: bloodBankName)
-                    }
-                }
-                else{
-                    
-                    let bloodBank = ["userId":userID,
-                                     "bloodBankName": self.txtBlodBankName.text! as String,
-                                     "bloodBankCity": self.txtBloodBankCity.text! as String,
-                                     "bloodBankLocation": self.bankLocation
-                        ] as [String : Any]
-                    
-                    //adding the artist inside the generated unique key
-                    self.refBloodBank.child(key ?? "").setValue(bloodBank)
-                    
-                    //displaying message
-                    print("added")
-                    
-                }
-            })
-            
+    
+    @IBAction func btnAddBloodBank(_ sender: Any) {
+        if let addBloodBankVC = self.storyboard?.instantiateViewController(withIdentifier:"AddBloodBankVC") as?  AddBloodBankVC {
+            addBloodBankVC.modalTransitionStyle   = .crossDissolve;
+            addBloodBankVC.modalPresentationStyle = .overCurrentContext
+           // addBloodBankVC.delagate = self
+
+            self.present(addBloodBankVC, animated: true, completion: nil)
         }
-        self.fetchBloodBanks()
     }
     
+   
+    // Can create diff screen to add userinfo
     func addAppUser(){
         //generating a new key inside artists node
         //and also getting the generated key
@@ -177,34 +128,6 @@ class BloodCollectorVC: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bloodBankList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var bloodBankCell: BloodBankCell? = tableView.dequeueReusableCell(withIdentifier: "bloodBankCell", for: indexPath) as? BloodBankCell
-        
-        if bloodBankCell == nil {
-            bloodBankCell = BloodBankCell.init(style: .default, reuseIdentifier: "bloodBankCell")
-        }
-        
-        //the bloodbank object
-        let bloodbank: BloodBankModel
-        bloodbank = bloodBankList[indexPath.row]
-        
-        bloodBankCell?.textLabel?.text = bloodbank.bloodBankName
-        bloodBankCell?.detailTextLabel?.text = bloodbank.bloodBankCity
-        
-        return bloodBankCell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bloodBankDetailsVC = storyboard?.instantiateViewController(identifier: "BloodBankDetailsVC") as! BloodBankDetailsVC
-        bloodBankDetailsVC.bloodBankDetails = bloodBankList[indexPath.row]
-        self.navigationController?.pushViewController(bloodBankDetailsVC, animated: true)
-    }
-    
 }
 
 

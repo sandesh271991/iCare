@@ -11,6 +11,7 @@
 		021201A4246A714A00811951 /* BloodBankAnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021201A3246A714A00811951 /* BloodBankAnotationModel.swift */; };
 		02248063246987F200096ECE /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02248062246987F200096ECE /* ViewController+Extension.swift */; };
 		023112AC246A9BD00048673D /* BloodDonerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023112AB246A9BD00048673D /* BloodDonerVC.swift */; };
+		0244C3E1246BB39600635F82 /* AddBloodBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0244C3E0246BB39600635F82 /* AddBloodBankVC.swift */; };
 		02B82CB1246910B300053D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B82CB0246910B300053D88 /* AppDelegate.swift */; };
 		02B82CB3246910B300053D88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B82CB2246910B300053D88 /* SceneDelegate.swift */; };
 		02B82CBA246910B500053D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B82CB9246910B500053D88 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		02EA50BC2469204B006E853F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EA50B82469204B006E853F /* SignUpViewController.swift */; };
 		02EA50BE24693DE9006E853F /* BloodBankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EA50BD24693DE9006E853F /* BloodBankCell.swift */; };
 		02EA50C024694073006E853F /* BloodBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EA50BF24694073006E853F /* BloodBankModel.swift */; };
+		02FDB08E246B00360011BC51 /* BloodCollectorVC+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDB08D246B00360011BC51 /* BloodCollectorVC+Tableview.swift */; };
 		46D45BA92921B8BC78D116CE /* Pods_iCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24594073C33FD4A8D76900B5 /* Pods_iCareTests.framework */; };
 		C082978C59BF5E002730EE5B /* Pods_iCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B14937CD5202A6E4A356D24 /* Pods_iCare.framework */; };
 		F2BF681686B64A339E48765A /* Pods_iCare_iCareUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7320165A37A7CA5AE53676 /* Pods_iCare_iCareUITests.framework */; };
@@ -55,6 +57,7 @@
 		021201A3246A714A00811951 /* BloodBankAnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodBankAnotationModel.swift; sourceTree = "<group>"; };
 		02248062246987F200096ECE /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		023112AB246A9BD00048673D /* BloodDonerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodDonerVC.swift; sourceTree = "<group>"; };
+		0244C3E0246BB39600635F82 /* AddBloodBankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBloodBankVC.swift; sourceTree = "<group>"; };
 		02B82CAD246910B300053D88 /* iCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B82CB0246910B300053D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B82CB2246910B300053D88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		02EA50B82469204B006E853F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		02EA50BD24693DE9006E853F /* BloodBankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodBankCell.swift; sourceTree = "<group>"; };
 		02EA50BF24694073006E853F /* BloodBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodBankModel.swift; sourceTree = "<group>"; };
+		02FDB08D246B00360011BC51 /* BloodCollectorVC+Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BloodCollectorVC+Tableview.swift"; sourceTree = "<group>"; };
 		096B3A2B374E063CDD1DE199 /* Pods-iCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCareTests.release.xcconfig"; path = "Target Support Files/Pods-iCareTests/Pods-iCareTests.release.xcconfig"; sourceTree = "<group>"; };
 		1061C8C3969AD22FBA5C1D95 /* Pods-iCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCare.debug.xcconfig"; path = "Target Support Files/Pods-iCare/Pods-iCare.debug.xcconfig"; sourceTree = "<group>"; };
 		24594073C33FD4A8D76900B5 /* Pods_iCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +192,8 @@
 			children = (
 				02EA50BF24694073006E853F /* BloodBankModel.swift */,
 				02EA50B62469204A006E853F /* BloodCollectorVC.swift */,
+				02FDB08D246B00360011BC51 /* BloodCollectorVC+Tableview.swift */,
+				0244C3E0246BB39600635F82 /* AddBloodBankVC.swift */,
 				02EA50BD24693DE9006E853F /* BloodBankCell.swift */,
 				02062DA3246A508400B3D91F /* BloodBankDetailsVC.swift */,
 				021201A3246A714A00811951 /* BloodBankAnotationModel.swift */,
@@ -490,12 +496,14 @@
 				02CBB3D02469C9A400A7C95D /* HomeTabBarController.swift in Sources */,
 				02EA50BC2469204B006E853F /* SignUpViewController.swift in Sources */,
 				02EA50BE24693DE9006E853F /* BloodBankCell.swift in Sources */,
+				02FDB08E246B00360011BC51 /* BloodCollectorVC+Tableview.swift in Sources */,
 				02EA50B92469204B006E853F /* LoginViewController.swift in Sources */,
 				02062DA4246A508400B3D91F /* BloodBankDetailsVC.swift in Sources */,
 				02EA50BB2469204B006E853F /* ResetPasswordViewController.swift in Sources */,
 				02EA50C024694073006E853F /* BloodBankModel.swift in Sources */,
 				02B82CB1246910B300053D88 /* AppDelegate.swift in Sources */,
 				02248063246987F200096ECE /* ViewController+Extension.swift in Sources */,
+				0244C3E1246BB39600635F82 /* AddBloodBankVC.swift in Sources */,
 				023112AC246A9BD00048673D /* BloodDonerVC.swift in Sources */,
 				02B82CB3246910B300053D88 /* SceneDelegate.swift in Sources */,
 			);
