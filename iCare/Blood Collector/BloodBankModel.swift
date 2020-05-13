@@ -19,6 +19,5 @@ struct BloodBankModel {
         self.bloodBankName = bloodBankName
         self.bloodBankCity = bloodBankCity
         self.bloodBankLocation = bloodBankLocation
-
     }
 }

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/Sandesh/Desktop/ss/iCare/iCare/Blood Doner/BloodDonerCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:BloodDonerVC.swift">
    </FileRef>
    <FileRef

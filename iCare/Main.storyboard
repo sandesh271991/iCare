@@ -429,25 +429,6 @@
             </objects>
             <point key="canvasLocation" x="6112.8000000000002" y="-409.7451274362819"/>
         </scene>
-        <!--Blood Doner-->
-        <scene sceneID="q3N-bB-nJU">
-            <objects>
-                <viewController storyboardIdentifier="BloodDonerVC" id="ZKQ-hp-2AX" customClass="BloodDonerVC" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Amu-zY-bN4"/>
-                        <viewControllerLayoutGuide type="bottom" id="gZV-p2-TUY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HXy-ci-f0X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Blood Doner" id="BMP-45-5ZP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="grU-ae-bFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3729" y="1070"/>
-        </scene>
         <!--Blood Receiver-->
         <scene sceneID="EzU-2E-HdL">
             <objects>
@@ -480,7 +461,7 @@
                     <connections>
                         <segue destination="ubj-7p-aNe" kind="relationship" relationship="viewControllers" id="V3V-hv-B0G"/>
                         <segue destination="dLW-Xc-TAd" kind="relationship" relationship="viewControllers" id="5CO-Lh-fYP"/>
-                        <segue destination="ZKQ-hp-2AX" kind="relationship" relationship="viewControllers" id="nLW-6W-NCi"/>
+                        <segue destination="fZz-UB-s4T" kind="relationship" relationship="viewControllers" id="mhW-rj-oaW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLW-z8-XHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -505,6 +486,231 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNt-NT-dZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3728.8000000000002" y="-412.44377811094455"/>
+        </scene>
+        <!--Blood DonerVC-->
+        <scene sceneID="YgY-aE-teI">
+            <objects>
+                <viewController storyboardIdentifier="BloodDonerVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rt5-AF-ic8" customClass="BloodDonerVC" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JjD-7C-OkB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bh2-Vv-NBX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="txO-x4-Uhp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXD-cp-22h">
+                                <rect key="frame" x="139.5" y="566" width="96" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutActionWithSender:" destination="Rt5-AF-ic8" eventType="touchUpInside" id="cjt-Q5-zpm"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-nG-raO">
+                                <rect key="frame" x="10" y="94" width="355" height="462"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="bloodDonerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bloodDonerCell" id="INl-mm-UFZ" customClass="BloodDonerCell" customModule="iCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="INl-mm-UFZ" id="aol-0b-b1l">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Rt5-AF-ic8" id="Fyv-wi-ES5"/>
+                                    <outlet property="delegate" destination="Rt5-AF-ic8" id="gI9-9d-g5u"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAx-WR-st2">
+                                <rect key="frame" x="129" y="54" width="117" height="30"/>
+                                <state key="normal" title="Add Blood Doner"/>
+                                <connections>
+                                    <action selector="btnAddBloodBank:" destination="Rt5-AF-ic8" eventType="touchUpInside" id="vWI-zI-Bvs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TIV-nG-raO" firstAttribute="top" secondItem="dAx-WR-st2" secondAttribute="bottom" constant="10" id="FB9-o2-o6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="TIV-nG-raO" secondAttribute="trailing" constant="10" id="P4V-j7-ZAh"/>
+                            <constraint firstItem="eXD-cp-22h" firstAttribute="centerX" secondItem="txO-x4-Uhp" secondAttribute="centerX" id="UwU-sP-7tA"/>
+                            <constraint firstItem="TIV-nG-raO" firstAttribute="leading" secondItem="txO-x4-Uhp" secondAttribute="leading" constant="10" id="hGU-mI-meN"/>
+                            <constraint firstItem="Bh2-Vv-NBX" firstAttribute="top" secondItem="eXD-cp-22h" secondAttribute="bottom" constant="10" id="kLa-vy-4jX"/>
+                            <constraint firstItem="dAx-WR-st2" firstAttribute="top" secondItem="JjD-7C-OkB" secondAttribute="bottom" constant="10" id="qlI-PS-a7l"/>
+                            <constraint firstItem="dAx-WR-st2" firstAttribute="centerX" secondItem="txO-x4-Uhp" secondAttribute="centerX" id="sTb-4c-4tA"/>
+                            <constraint firstItem="eXD-cp-22h" firstAttribute="top" secondItem="TIV-nG-raO" secondAttribute="bottom" constant="10" id="xzh-dt-bcu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6PX-ig-3ZG"/>
+                    <connections>
+                        <outlet property="tableview" destination="TIV-nG-raO" id="3OS-nz-4LK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Av-Or-WWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4680.8000000000002" y="1044.8275862068967"/>
+        </scene>
+        <!--Blood Doner-->
+        <scene sceneID="UyW-eD-uFp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fZz-UB-s4T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Blood Doner" id="3Ja-22-Sja"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bqf-7v-HBd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rt5-AF-ic8" kind="relationship" relationship="rootViewController" id="qkX-Wj-fxX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zkt-9i-FUn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3741.5999999999999" y="1044.8275862068967"/>
+        </scene>
+        <!--Blood Doner DetailsVC-->
+        <scene sceneID="BEK-qb-NGj">
+            <objects>
+                <viewController storyboardIdentifier="BloodDonerDetailsVC" id="QB7-b8-Yz2" customClass="BloodDonerDetailsVC" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BKZ-VF-9Cs"/>
+                        <viewControllerLayoutGuide type="bottom" id="0W6-uG-NVs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2XX-fu-DJu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3TB-AL-mqJ">
+                                <rect key="frame" x="26" y="50" width="323" height="61.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AI8-6u-w3X">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbq-O3-dRo">
+                                        <rect key="frame" x="0.0" y="20.5" width="323" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCN-aD-zdQ">
+                                        <rect key="frame" x="0.0" y="41" width="323" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bTn-ip-A6V">
+                                <rect key="frame" x="10" y="121.5" width="355" height="535.5"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3TB-AL-mqJ" firstAttribute="top" secondItem="BKZ-VF-9Cs" secondAttribute="bottom" constant="50" id="1Jq-15-hsH"/>
+                            <constraint firstItem="0W6-uG-NVs" firstAttribute="top" secondItem="bTn-ip-A6V" secondAttribute="bottom" constant="10" id="6xB-3A-e7h"/>
+                            <constraint firstItem="3TB-AL-mqJ" firstAttribute="leading" secondItem="2XX-fu-DJu" secondAttribute="leadingMargin" constant="10" id="DR8-yc-Pk9"/>
+                            <constraint firstItem="bTn-ip-A6V" firstAttribute="top" secondItem="3TB-AL-mqJ" secondAttribute="bottom" constant="10" id="IHT-Df-W3o"/>
+                            <constraint firstItem="bTn-ip-A6V" firstAttribute="leading" secondItem="2XX-fu-DJu" secondAttribute="leading" constant="10" id="hjJ-mK-mUj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3TB-AL-mqJ" secondAttribute="trailing" constant="10" id="nWL-qS-ATj"/>
+                            <constraint firstAttribute="trailing" secondItem="bTn-ip-A6V" secondAttribute="trailing" constant="10" id="wHz-Rj-sOg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblBloodBankCity" destination="cbq-O3-dRo" id="MUq-yU-eH5"/>
+                        <outlet property="lblBloodBankName" destination="AI8-6u-w3X" id="zhj-bW-Zye"/>
+                        <outlet property="mapView" destination="bTn-ip-A6V" id="tev-YA-LyC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ID-16-aID" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5423" y="1045"/>
+        </scene>
+        <!--Add Blood DonerVC-->
+        <scene sceneID="lgy-M2-6fg">
+            <objects>
+                <viewController storyboardIdentifier="AddBloodDonerVC" id="GUx-wt-Nc5" customClass="AddBloodDonerVC" customModule="iCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Feh-iT-12Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="38K-Jv-9WS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="81a-ur-mIv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMs-bN-efW">
+                                <rect key="frame" x="20" y="20" width="335" height="627"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VZT-rr-gLB">
+                                        <rect key="frame" x="18" y="50" width="299" height="128"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="90I-24-1lE">
+                                                <rect key="frame" x="0.0" y="0.0" width="299" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mjc-KI-k2Z">
+                                                <rect key="frame" x="0.0" y="49" width="299" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmb-nD-7ch">
+                                                <rect key="frame" x="0.0" y="98" width="299" height="30"/>
+                                                <state key="normal" title="Add Blood Doner"/>
+                                                <connections>
+                                                    <action selector="btnAddBank:" destination="GUx-wt-Nc5" eventType="touchUpInside" id="1cP-Zo-yc2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVe-zn-eSN">
+                                        <rect key="frame" x="300" y="-14.5" width="50" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Tae-BZ-LuY"/>
+                                            <constraint firstAttribute="height" constant="50" id="eGo-du-cp8"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="btnCancel:" destination="GUx-wt-Nc5" eventType="touchUpInside" id="MQs-7N-orV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VZT-rr-gLB" secondAttribute="trailing" constant="10" id="1nZ-ic-sSF"/>
+                                    <constraint firstItem="VZT-rr-gLB" firstAttribute="top" secondItem="uMs-bN-efW" secondAttribute="top" constant="50" id="6c6-is-tG6"/>
+                                    <constraint firstAttribute="trailing" secondItem="wVe-zn-eSN" secondAttribute="trailing" constant="-15" id="HaM-p3-Raf"/>
+                                    <constraint firstItem="VZT-rr-gLB" firstAttribute="leading" secondItem="uMs-bN-efW" secondAttribute="leadingMargin" constant="10" id="OIN-J8-bi5"/>
+                                    <constraint firstItem="wVe-zn-eSN" firstAttribute="top" secondItem="uMs-bN-efW" secondAttribute="top" constant="-15" id="jAM-ul-sHj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uMs-bN-efW" secondAttribute="trailing" constant="20" id="NQt-5D-B66"/>
+                            <constraint firstItem="uMs-bN-efW" firstAttribute="top" secondItem="Feh-iT-12Z" secondAttribute="bottom" constant="20" id="WR1-U5-wQR"/>
+                            <constraint firstItem="38K-Jv-9WS" firstAttribute="top" secondItem="uMs-bN-efW" secondAttribute="bottom" constant="20" id="iqU-vd-G6I"/>
+                            <constraint firstItem="uMs-bN-efW" firstAttribute="leading" secondItem="81a-ur-mIv" secondAttribute="leading" constant="20" id="rdp-da-arW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="txtBlodBankName" destination="90I-24-1lE" id="iHr-FL-OE0"/>
+                        <outlet property="txtBloodBankCity" destination="mjc-KI-k2Z" id="dVt-37-SMr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7K-eQ-NDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6170" y="1045"/>
         </scene>
     </scenes>
     <resources>

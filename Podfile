@@ -12,7 +12,6 @@ pod 'Firebase/Storage'
 pod 'IQKeyboardManagerSwift'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'GeoFire', '~> 4.0'
-pod 'SVProgressHUD'
 
 
   # Pods for iCare

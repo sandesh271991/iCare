@@ -10,8 +10,14 @@
 		02062DA4246A508400B3D91F /* BloodBankDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062DA3246A508400B3D91F /* BloodBankDetailsVC.swift */; };
 		021201A4246A714A00811951 /* BloodBankAnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021201A3246A714A00811951 /* BloodBankAnotationModel.swift */; };
 		02248063246987F200096ECE /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02248062246987F200096ECE /* ViewController+Extension.swift */; };
+		02265E5B246BFB6900ECAAEC /* BloodDonerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02265E5A246BFB6800ECAAEC /* BloodDonerCell.swift */; };
 		023112AC246A9BD00048673D /* BloodDonerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023112AB246A9BD00048673D /* BloodDonerVC.swift */; };
 		0244C3E1246BB39600635F82 /* AddBloodBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0244C3E0246BB39600635F82 /* AddBloodBankVC.swift */; };
+		02617009246BCC35005385BE /* BloodDonerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617008246BCC34005385BE /* BloodDonerModel.swift */; };
+		0261700B246BE45F005385BE /* BloodDonerVC+Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261700A246BE45F005385BE /* BloodDonerVC+Tableview.swift */; };
+		0261700D246BE4C0005385BE /* AddBloodDonerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261700C246BE4C0005385BE /* AddBloodDonerVC.swift */; };
+		02617011246BE52F005385BE /* BloodDonerDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617010246BE52F005385BE /* BloodDonerDetailsVC.swift */; };
+		02617013246BE55E005385BE /* BloodDonerAnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02617012246BE55E005385BE /* BloodDonerAnotationModel.swift */; };
 		02B82CB1246910B300053D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B82CB0246910B300053D88 /* AppDelegate.swift */; };
 		02B82CB3246910B300053D88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B82CB2246910B300053D88 /* SceneDelegate.swift */; };
 		02B82CBA246910B500053D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B82CB9246910B500053D88 /* Assets.xcassets */; };
@@ -56,8 +62,14 @@
 		02062DA3246A508400B3D91F /* BloodBankDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodBankDetailsVC.swift; sourceTree = "<group>"; };
 		021201A3246A714A00811951 /* BloodBankAnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodBankAnotationModel.swift; sourceTree = "<group>"; };
 		02248062246987F200096ECE /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		02265E5A246BFB6800ECAAEC /* BloodDonerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BloodDonerCell.swift; path = "/Users/Sandesh/Desktop/ss/iCare/iCare/Blood Doner/BloodDonerCell.swift"; sourceTree = "<absolute>"; };
 		023112AB246A9BD00048673D /* BloodDonerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodDonerVC.swift; sourceTree = "<group>"; };
 		0244C3E0246BB39600635F82 /* AddBloodBankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBloodBankVC.swift; sourceTree = "<group>"; };
+		02617008246BCC34005385BE /* BloodDonerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonerModel.swift; sourceTree = "<group>"; };
+		0261700A246BE45F005385BE /* BloodDonerVC+Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BloodDonerVC+Tableview.swift"; sourceTree = "<group>"; };
+		0261700C246BE4C0005385BE /* AddBloodDonerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBloodDonerVC.swift; sourceTree = "<group>"; };
+		02617010246BE52F005385BE /* BloodDonerDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonerDetailsVC.swift; sourceTree = "<group>"; };
+		02617012246BE55E005385BE /* BloodDonerAnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonerAnotationModel.swift; sourceTree = "<group>"; };
 		02B82CAD246910B300053D88 /* iCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B82CB0246910B300053D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B82CB2246910B300053D88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +135,12 @@
 			isa = PBXGroup;
 			children = (
 				023112AB246A9BD00048673D /* BloodDonerVC.swift */,
+				0261700A246BE45F005385BE /* BloodDonerVC+Tableview.swift */,
+				02617008246BCC34005385BE /* BloodDonerModel.swift */,
+				0261700C246BE4C0005385BE /* AddBloodDonerVC.swift */,
+				02265E5A246BFB6800ECAAEC /* BloodDonerCell.swift */,
+				02617010246BE52F005385BE /* BloodDonerDetailsVC.swift */,
+				02617012246BE55E005385BE /* BloodDonerAnotationModel.swift */,
 			);
 			path = "Blood Doner";
 			sourceTree = "<group>";
@@ -491,16 +509,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				02EA50BA2469204B006E853F /* BloodCollectorVC.swift in Sources */,
+				02617011246BE52F005385BE /* BloodDonerDetailsVC.swift in Sources */,
 				02CBB3CA2469C6B500A7C95D /* BloodReceiverVC.swift in Sources */,
 				021201A4246A714A00811951 /* BloodBankAnotationModel.swift in Sources */,
 				02CBB3D02469C9A400A7C95D /* HomeTabBarController.swift in Sources */,
 				02EA50BC2469204B006E853F /* SignUpViewController.swift in Sources */,
+				02617009246BCC35005385BE /* BloodDonerModel.swift in Sources */,
+				02265E5B246BFB6900ECAAEC /* BloodDonerCell.swift in Sources */,
+				02617013246BE55E005385BE /* BloodDonerAnotationModel.swift in Sources */,
 				02EA50BE24693DE9006E853F /* BloodBankCell.swift in Sources */,
 				02FDB08E246B00360011BC51 /* BloodCollectorVC+Tableview.swift in Sources */,
 				02EA50B92469204B006E853F /* LoginViewController.swift in Sources */,
 				02062DA4246A508400B3D91F /* BloodBankDetailsVC.swift in Sources */,
 				02EA50BB2469204B006E853F /* ResetPasswordViewController.swift in Sources */,
 				02EA50C024694073006E853F /* BloodBankModel.swift in Sources */,
+				0261700B246BE45F005385BE /* BloodDonerVC+Tableview.swift in Sources */,
+				0261700D246BE4C0005385BE /* AddBloodDonerVC.swift in Sources */,
 				02B82CB1246910B300053D88 /* AppDelegate.swift in Sources */,
 				02248063246987F200096ECE /* ViewController+Extension.swift in Sources */,
 				0244C3E1246BB39600635F82 /* AddBloodBankVC.swift in Sources */,
